@@ -6,7 +6,13 @@ I created a SQLite Database, and a table named "Users":
 
 I run the python server using a virtualenv.
 
-Needed command to launch :
+#    Needed command to launch :
+
+pip install flask flask-jsonpify flask-sqlalchemy flask-restful
+pip freeze
+python -m server
+
+It runs on 127.0.0.1:5002
 
 
 #Endpoint 1 : /users/id
