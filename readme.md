@@ -1,4 +1,4 @@
-#Test Data Engineer ContentSquare
+#   Test Data Engineer ContentSquare
 
 I created a SQLite Database, and a table named "Users":
 
@@ -6,7 +6,7 @@ I created a SQLite Database, and a table named "Users":
 
 I run the python server using a virtualenv.
 
-#    Needed command to launch :
+#Needed command to launch :
 
 pip install flask flask-jsonpify flask-sqlalchemy flask-restful
 pip freeze
@@ -15,7 +15,7 @@ python -m server
 It runs on 127.0.0.1:5002
 
 
-#Endpoint 1 : /users/id
+#   Endpoint 1 : /users/id
 
 Returns a json with all the information about the selected user.
 Returns an error if the user doesn't exists.
@@ -24,7 +24,7 @@ The API will aslo go search for the country in the excelfile.
 It works also when the ip provided in the xlsx file is like this : 123.45.*.* it will match the ip of the user to the pattern in the xlsx
 
 
-#EndPoint 2 : /add? with parameter id, lastname, ip, firstname, age.
+#   EndPoint 2 : /add? with parameter id, lastname, ip, firstname, age.
 
 Id, lastname and ip are mandatory. If those are missing it will return an error specifying which one is missing.
 
