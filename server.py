@@ -16,7 +16,7 @@ class SpecificUsers(Resource):
         query = conn.execute("select * from Users where id =%d "  %int(user_id))
         query2 = conn.execute("select ipv4 from Users where id =%d "  %int(user_id))
         user_ip = query2.fetchone()[0]
-        country = "NA"
+        country = "Unknown  "
         geoip = csv.reader(open("geoip.csv"), delimiter=",")
         for row in geoip:
             if row[0].split('.')[0] == user_ip.split('.')[0] or row[0].split('.')[0]=="*":
@@ -49,14 +49,14 @@ class NewUser(Resource):
 
                     if len(list(query)) == 0:   #USER DOESN'T EXIST --> CREATE
                         if age == -1 and first == "-1":
-                            query = conn.execute("insert into Users values (%d, '%s', '%s');"  %(int(uid), last, ip))
+                            query = conn.execute("insert into Users values (%d, '%s', '%s', ' ', ' ');"  %(int(uid), last, ip))
                         elif age == -1:
-                            query = conn.execute("insert into Users values (%d, '%s', '%s', '%s');"  %(int(uid), last, ip, first))
+                            query = conn.execute("insert into Users values (%d, '%s', '%s', '%s', ' ');"  %(int(uid), last, ip, first))
                         elif first == "-1":
-                            query = conn.execute("insert into Users values (%d, '%s', '%s', %d);"  %(int(uid), last, ip, int(age)))
+                            query = conn.execute("insert into Users values (%d, '%s', '%s', ' ', %d);"  %(int(uid), last, ip, int(age)))
                         else:
                             query = conn.execute("insert into Users values (%d, '%s', '%s', '%s', %d);"  %(int(uid), last, ip, first, int(age)))
-                        print("User inserted")
+                        return {'Done' : "New User created" }
 
                     else: #USER EXIST --> UPDATE
                         if age == -1 and first == "-1":
@@ -67,7 +67,7 @@ class NewUser(Resource):
                             query = conn.execute("update Users set lastname = '%s', ipv4 = '%s', age = %d where id = %d;"  %(last, ip, int(age), int(uid)))
                         else:
                             query = conn.execute("update Users set lastname = '%s', ipv4 = '%s', firstname = '%s', age = %d where id = %d;"  %(last, ip, first, int(age), int(uid)))
-                        print("User updated")
+                        return {'Done' : "User updated" }
                 else:
                     return {'Error' : "Missing IP" }
             else:
