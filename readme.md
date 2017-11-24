@@ -12,7 +12,7 @@ pip install flask flask-jsonpify flask-sqlalchemy flask-restful
 pip freeze
 python -m server
 
-It runs on 127.0.0.1:5002
+It runs on 127.0.0.1:8000
 
 
 #   Endpoint 1 : /users/id

@@ -80,4 +80,4 @@ api.add_resource(SpecificUsers, '/users/<user_id>') # Route_2
 api.add_resource(NewUser, '/add') # Route_3
 
 if __name__ == '__main__':
-     app.run(port='5002')
+     app.run(port='8000')
